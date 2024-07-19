@@ -1,0 +1,483 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.footer-clean {
+    padding: 50px 0;
+    background-color: #fff;
+    color: #4b4c4d;
+}
+
+    .footer-clean h3 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .footer-clean ul {
+        padding: 0;
+        list-style: none;
+        line-height: 1.6;
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+
+        .footer-clean ul a {
+            color: inherit;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+            .footer-clean ul a:hover {
+                opacity: 1;
+            }
+
+    .footer-clean .item.social {
+        text-align: right;
+    }
+
+@media (max-width:767px) {
+    .footer-clean .item {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-clean .item.social {
+        text-align: center;
+    }
+    h3{
+        font-size: 16px;
+    }
+    .strong {
+        width: 100%;
+    }
+    .footerpara{
+        font-size: 12px;
+    }
+   /* .form-group input[type="text"] {
+        width: 100% !important;
+    }*/
+    .cfileread {
+        padding: 5px 10px;
+    }
+    #aa-signin .aa-signin-area .aa-signin-form {
+        padding: 20px !important;
+       
+    }
+    #aa-signin .aa-signin-area {
+         padding: 0 !important; 
+        width: 100%;
+    }
+
+}
+.footer-clean .item.social > a {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+    margin-top: 22px;
+    color: inherit;
+    opacity: 0.75;
+}
+
+    .footer-clean .item.social > a:hover {
+        opacity: 0.9;
+    }
+
+@media (max-width:991px) {
+    .footer-clean .item.social > a {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width:767px) {
+    .footer-clean .item.social > a {
+        margin-top: 10px;
+    }
+}
+
+.footer-clean .copyright {
+    margin-top: 1px;
+    margin-bottom: 0;
+    font-size: 13px;
+    opacity: 0.6;
+}
+
+.textbox {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 1rem; 
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem; 
+        text-decoration: underline;
+        font-size:20px;
+    }
+
+    .form-group input[type="text"] {
+        width: 100%; 
+        padding: 8px; 
+        font-size: 1rem; 
+        line-height: 1.5; 
+        color: #495057; 
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da; 
+        border-radius: 4px; 
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        /*margin: -39px 0px 33px 461px*/
+    }
+
+       
+        .form-group input[type="text"]:focus {
+            border-color: #80bdff; 
+            outline: 0; 
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+.Ourfile {
+    text-align: center;
+    color: #3AAFA9;
+}
+
+header {
+    /*background-color: #00154f !important;*/
+    /*background: linear-gradient(toright, #00154f, #f4af1b );*/
+    background-image: linear-gradient(to bottom right, #17252A, #3AAFA9);
+}
+footer {
+    /*background-color: #00154f !important;*/
+    /*background: linear-gradient(toright, #00154f, #f4af1b );*/
+    background-image: linear-gradient(to bottom right, #17252A, #3AAFA9);
+    color: white;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+.cfile {
+    background-color: #f4af1b;
+}
+.fileOurs {
+    background-color: #3AAFA9;
+    box-shadow: 2px 2px 5px #000;
+    text-decoration-color: #f4af1b;
+    margin-top: 51px;
+    margin-left: 52px;
+    color: white;
+}
+.fileTheir {
+    background-color: #3AAFA9;
+    box-shadow: 2px 2px 5px #000;
+    text-decoration-color: #f4af1b;
+    margin-left: 658px;
+    margin-top: -105px;
+    color: white;
+}
+
+.UploadTheirText {
+  
+    margin-top: -138px;
+    margin-left: 659px;
+    margin-bottom: 103px;
+}
+
+.UploadOurText {
+    margin-top: 26px;
+    margin-left: 53px;
+}
+
+#uploadForm {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #0000006d;
+}
+#uploadedData {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: 2px 2px 5px #0000006d;
+}
+
+.Uploadfile {
+    background-color: #535454;
+    box-shadow: 2px 2px 5px #000;
+    color: #FFFFFF;
+    font-size: 1rem;
+    border: 1px solid #535454;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: -181px 0px 0px 1055px;
+    width: 13%;
+    text-align: center;
+}
+.cfileread {
+    background-image: linear-gradient(to bottom right, #17252A, #3AAFA9);
+    color: #fff;
+    transition: 2s;
+    padding:10px 20px;
+    border: 3px;
+    box-shadow: 2px 2px 5px #000c;
+}
+
+    .cfileread:hover {
+        /*background-color: #00154f !important;*/
+        background-image: linear-gradient(to bottom right, #17252ad4, #3aafa9d9);
+        color: #fff;
+    }
+    .Uploadfile: over {
+        background-color: #0056b3; 
+    }
+.ExportData {
+    background-color: #535454;
+    box-shadow: 2px 2px 5px #000;
+    color: #FFFFFF;
+    font-size: 1rem;
+    border: 1px solid #535454;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 10px;
+    width: 13%;
+    text-align: center;
+}
+.ourheading{
+    margin-left:63px;
+}
+.theirheading {
+    margin-left: 655px;
+    margin-top: -34px;
+}
+
+
+
+    thead {
+        /*background-color: #f2bc94;*/
+        /*background-color: #00154f !important;*/
+        background-image: linear-gradient(to bottom right, #17252A, #3AAFA9);
+        color: #fff;
+    }
+
+/*sign in */
+
+#aa-signin {
+    /*background-image: url("../img/signin-bg.jpg");
+    background-position: center center;
+    background-size: cover;*/
+    background-image: linear-gradient(to bottom right, #17252A, #3AAFA9);
+    bottom: 0;
+    height: auto;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    overflow-y: auto;
+    width: 100%;
+    align-items: center;
+}
+
+/*#aa-signin:before {*/
+    /*background-color: rgba(0, 0, 0, 0.8);*/
+    /*content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}*/
+
+#aa-signin .aa-signin-area {
+    display: inline;
+    float: left;
+    padding: 4% 20%;
+    width: 100%;
+}
+
+    #aa-signin .aa-signin-area .aa-signin-form {
+        background-color: rgba(255, 255, 255, 0.6);
+        display: inline;
+        padding: 50px;
+        float: left;
+        width: 80%;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px #000000b9;
+    }
+
+        #aa-signin .aa-signin-area .aa-signin-form .aa-signin-form-title {
+            display: inline;
+            /*float: left;*/
+            text-align: center;
+            width: 80%;
+        }
+
+            #aa-signin .aa-signin-area .aa-signin-form .aa-signin-form-title .aa-property-home {
+                color: #000;
+                display: inline-block;
+                font-size: 25px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                text-transform: uppercase;
+            }
+
+            #aa-signin .aa-signin-area .aa-signin-form .aa-signin-form-title h4 {
+                color: #000;
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 30px;
+                text-transform: uppercase;
+            }
+
+        #aa-signin .aa-signin-area .aa-signin-form .aa-single-field {
+            display: inline;
+            float: left;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+            #aa-signin .aa-signin-area .aa-signin-form .aa-single-field label {
+                color: #000;
+                display: inline-block;
+                text-align: left;
+            }
+
+                #aa-signin .aa-signin-area .aa-signin-form .aa-single-field label .required {
+                    color: #f60000;
+                }
+
+            #aa-signin .aa-signin-area .aa-signin-form .aa-single-field input[type="text"],
+            #aa-signin .aa-signin-area .aa-signin-form .aa-single-field input[type="email"],
+            #aa-signin .aa-signin-area .aa-signin-form .aa-single-field input[type="password"] {
+                border: none;
+                color: #555;
+                margin-bottom: 10px;
+                height: 35px;
+                padding: 5px;
+                width: 100%;
+                -webkit-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+              
+                -o-transition: all 0.5s;
+                transition: all 0.5s;
+            }
+
+            #aa-signin .aa-signin-area .aa-signin-form .aa-single-field label input [type="checkbox"] {
+                margin-left: 10px;
+            }
+
+            #aa-signin .aa-signin-area .aa-signin-form .aa-single-field textarea {
+                border: none;
+                border-bottom: 2px solid #ccc;
+                color: #555;
+                margin-bottom: 5px;
+                padding: 10px;
+                height: 100px;
+                width: 100%;
+                -webkit-transition: all 0.5s;
+               
+                -o-transition: all 0.5s;
+                transition: all 0.5s;
+            }
+
+        #aa-signin .aa-signin-area .aa-signin-form .aa-single-submit {
+            display: inline;
+            float: left;
+            text-align: center;
+            width: 100%;
+        }
+
+            #aa-signin .aa-signin-area .aa-signin-form .aa-single-submit input[type="submit"] {
+                color: #fff;
+                /*font-size: 16px;*/
+                /*font-weight: bold;*/
+                /*height: 50px;*/
+                margin-bottom: 20px;
+                margin-top: 10px;
+                /*padding: 6px 12px;*/
+                /*width: 150px;*/
+                -webkit-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+               
+                -o-transition: all 0.5s;
+                transition: all 0.5s;
+            }
+
+                #aa-signin .aa-signin-area .aa-signin-form .aa-single-submit input[type="submit"]:hover {
+                    background-color: #FFF;
+                }
+
+            #aa-signin .aa-signin-area .aa-signin-form .aa-single-submit p {
+                color: #000;
+            }
+
+                #aa-signin .aa-signin-area .aa-signin-form .aa-single-submit p a {
+                    color: #fff;
+                    font-weight: bold;
+                }
+
+
+.strong {
+    background-color: #3AAFA9;
+    box-shadow: 2px 2px 5px #000c;
+    width: 80%;
+}
+.formback {
+    background-image: linear-gradient(to bottom right, #17252aa4, #3aafa99c);
+    padding: 20px;
+    color: #fff;
+}
+
+/*.processHeading {
+    margin: 61px 0px 0px 229px;
+}*/
+.h3process{
+    display: inline;
+}

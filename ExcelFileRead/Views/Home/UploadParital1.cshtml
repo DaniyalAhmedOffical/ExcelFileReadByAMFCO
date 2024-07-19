@@ -1,0 +1,20 @@
+﻿@* @model ExcelFileRead.Models.UploadViewModel
+
+<form id="form1" asp-action="UploadFile1" enctype="multipart/form-data" method="post" class="formback">
+
+    <div class="container align-items-center text-center">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group mt-3">
+                    <label for="file1">Upload Our File:</label>
+                    <input type="file" name="file" id="file1" class="btn fileOurs" />
+                </div>
+            </div>
+            <button type="submit" class="btn Uploadfile mt-3">Upload</button>
+        </div>
+</form>
+
+<div id="result1"></div>
+
+
+ *@

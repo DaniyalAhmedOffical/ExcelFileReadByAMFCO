@@ -1,0 +1,135 @@
+﻿@model ExcelFileRead.Models.UploadViewModel
+
+@{
+    ViewData["Title"] = "Upload Files";
+}
+@* 
+Process name lable *@
+
+            <div class="form-group ">
+                @* <label for="processName" class="form- label">Process Name:</label> *@
+                <div class="container text-center">
+                    <div class="row">
+                        <div class="col-md-2 col-lg-2 col-sm-12">
+                             <h4 class="h3process">Process Name:</h4>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                            <input type="text" id="processName" class="form-control" />
+                        </div>
+                        <div class="col-md-2 col-lg-2 col-sm-12">
+                            <h4 class="h3process">Customer Name:</h4>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                         <input type="text" id="customerName" class="form-control" />
+                        </div>
+                         <div class="col-md-2 col-lg-2 col-sm-12">
+                            <button onclick="openInNewTab()" class="btn cfileread">New Process</button>
+                        </div>
+            
+                    </div>
+                </div>
+                
+          
+            </div>
+        
+
+<div>
+    <form id="uploadForm" asp-action="UploadFiles" enctype="multipart/form-data" method="post">
+
+        <div class="container formback text-center">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <h3 >Upload Our File</h3>
+                      
+                        <input type="file" name="file1" id="file1" class="btn strong " />
+                    </div>
+
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+
+                    <div class="form-group">
+                        <h3 >Upload Their File</h3>
+                        <input type="file" name="file2" id="file2" class="btn strong " />
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <button type="submit" class="btn cfileread">Upload</button>
+                </div>
+            </div>
+        </div>
+         
+  
+     
+       
+    
+    </form>
+</div>
+
+
+
+<div id="uploadedData">
+    @{
+        Html.RenderPartial("UploadedData", Model);
+    }
+</div>
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#uploadForm").submit(function (event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+
+                $.ajax({
+                    url: '@Url.Action("UploadFiles", "Home")',
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $("#uploadedData").html(response);
+                    },
+                    error: function (response) {
+                        alert("An error occurred while uploading the files.");
+                    }
+                });
+            });
+        });
+         function openInNewTab() {
+            window.open(window.location.href, '_blank');
+        }
+        // Logout button click event
+        document.getElementById("logoutBtn").addEventListener("click", function () {
+            // Perform logout actions
+            // Redirect the user to the login page
+            window.location.href = "Login";
+            // Clear browser history
+            window.history.pushState({}, '', '/');
+        });
+
+        // Check if the user is logged in
+        if (isLoggedIn()) {
+            // Store a flag in session storage indicating that the user is logged in
+            sessionStorage.setItem("isLoggedIn", "true");
+        }
+
+        // Function to check if the user is logged in
+        function isLoggedIn() {
+            // Check if the flag indicating login status is present in session storage
+            return sessionStorage.getItem("isLoggedIn") === "true";
+        }
+
+        // Listen for beforeunload event to prevent navigation when logged out
+        window.addEventListener("beforeunload", function (event) {
+            // If the user is not logged in, prevent them from navigating away
+            if (!isLoggedIn()) {
+                // Cancel the event to prevent navigation
+                event.preventDefault();
+                // Chrome requires a return statement to display the confirmation dialog
+                return '';
+            }
+        });
+    </script>
+}

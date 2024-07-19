@@ -1,0 +1,286 @@
+﻿@model ExcelFileRead.Models.UploadViewModel
+
+@if (Model != null)
+{
+    <h3>Our File Data</h3>
+    @if (Model.File1ColumnNames.Count > 0)
+    {
+        <div style="overflow-x:auto;">
+            <table class="table mt-3 text-nowrap" id="tblData1">
+                <thead>
+                    <tr>
+                        @foreach (var colName in Model.File1ColumnNames)
+                        {
+                            <th>@colName</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.File1Rows.Count > 0)
+                    {
+                        <tr>
+                            @foreach (var cell in Model.File1Rows[0])
+                            {
+                                <td>@cell</td>
+                            }
+                        </tr>
+                        <tr>
+                            @foreach (var cell in Model.File1Rows[0])
+                            {
+                                <td>@GetCellTypeAndCount(cell)</td>
+                            }
+                        </tr>
+                        <tr>
+                            @foreach (var cell in Model.File1Rows[0])
+                            {
+                                <td>@Html.TextBox("comment", null, new { @class = "comment" })</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <p>No data available for Our File.</p>
+    }
+
+    <h3>Their File Data</h3>
+    @if (Model.File2ColumnNames.Count > 0)
+    {
+        <div style="overflow-x:auto;">
+            <table class="table mt-3 text-nowrap" id="tblData2">
+                <thead>
+                    <tr>
+                        @foreach (var colName in Model.File2ColumnNames)
+                        {
+                            <th>@colName</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.File2Rows.Count > 0)
+                    {
+                        <tr>
+                            @foreach (var cell in Model.File2Rows[0])
+                            {
+                                <td>@cell</td>
+                            }
+                        </tr>
+                        <tr>
+                            @foreach (var cell in Model.File2Rows[0])
+                            {
+                                <td>@GetCellTypeAndCount(cell)</td>
+                            }
+                        </tr>
+                        <tr>
+                            @foreach (var cell in Model.File2Rows[0])
+                            {
+                                <td>@Html.TextBox("comment", null, new { @class = "comment" })</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <p>No data available for Their File.</p>
+    }
+}
+else
+{
+    <p>No data available.</p>
+}
+
+
+        <h3>Matching Set</h3>
+        <table class="table mt-3 text-nowrap" id="matchingSet">
+            <thead>
+                <tr>
+                    <th>Our Column</th>
+                    <th>Their Column</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DropDownList("OurColumns", new SelectList(Model.File1ColumnNames), "Select Our Column", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.DropDownList("TheirColumns", new SelectList(Model.File2ColumnNames), "Select Their Column", new { @class = "form-control" })
+                    </td>
+                    <td>
+                <button type="button" class="btn cfileread pt-1 pb-1 pl-2 pr-2" onclick="addNewRow()">+</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="row mb-2">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <button type="button" onclick="exportCombinedTableToExcel('tblData1', 'tblData2')" class="btn cfileread mt-3" id="test">Export Data To Excel</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    string GetCellTypeAndCount(object cell)
+    {
+        if (cell == null)
+        {
+            return "N/A";
+        }
+
+        string cellValue = cell.ToString();
+        bool isNumeric = cellValue.All(char.IsDigit);
+        bool isAlphabetic = cellValue.All(char.IsLetter);
+        bool isAlphanumeric = cellValue.Any(c => char.IsLetterOrDigit(c) || char.IsSymbol(c) || char.IsPunctuation(c)) && !isNumeric && !isAlphabetic;
+
+        if (isNumeric)
+        {
+            return $"N{cellValue.Length}";
+        }
+        if (isAlphabetic)
+        {
+            return $"A{cellValue.Length}";
+        }
+        if (isAlphanumeric)
+        {
+            return $"AN{cellValue.Length}";
+        }
+
+        return "N/A";
+    }
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+<script>
+    function addNewRow() {
+        var newRow = `
+                <tr>
+                    <td>
+                        @Html.DropDownList("OurColumns", new SelectList(Model.File1ColumnNames), "Select Our Column", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.DropDownList("TheirColumns", new SelectList(Model.File2ColumnNames), "Select Their Column", new { @class = "form-control" })
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+            `;
+        $('#matchingSet tbody').append(newRow);
+    }
+</script>
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script>
+    function exportCombinedTableToExcel(tableID1, tableID2) {
+        try {
+            var table1 = document.getElementById(tableID1);
+            var table2 = document.getElementById(tableID2);
+
+            // Get the process name and customer name from the input fields
+            var processName = document.getElementById('processName').value;
+            var customerName = document.getElementById('customerName').value;
+
+            // Alert if any of the fields are empty
+            if (!processName && !customerName) {
+                alert("Please enter both customer and process name.");
+                return;
+            } else if (!customerName) {
+                alert("Please enter customer name.");
+                return;
+            } else if (!processName) {
+                alert("Please enter process name.");
+                return;
+            }
+
+            // Check if tables exist
+            if (!table1 || !table2) {
+                console.error("Tables not found.");
+                return;
+            }
+
+            // Function to convert HTML table to an array of arrays, including input values
+            function tableToArray(table) {
+                var data = [];
+                for (var row = 0; row < table.rows.length; row++) {
+                    var rowData = [];
+                    for (var col = 0; col < table.rows[row].cells.length; col++) {
+                        var cell = table.rows[row].cells[col];
+                        var input = cell.querySelector('input');
+                        if (input) {
+                            rowData.push(input.value);
+                        } else {
+                            rowData.push(cell.innerText || cell.textContent);
+                        }
+                    }
+                    data.push(rowData);
+                }
+                return data;
+            }
+
+            // Convert each table to an array of arrays
+            var data1 = tableToArray(table1);
+            var data2 = tableToArray(table2);
+
+            // Get matching set data column headers and values
+            var matchingSetData = [];
+            var matchingSetHeaders = []; // Store column headers separately
+            $('#matchingSet thead th').each(function () {
+                matchingSetHeaders.push($(this).text());
+            });
+            matchingSetData.push(matchingSetHeaders); // Push column headers as the first row
+            $('#matchingSet tbody tr').each(function () {
+                var rowData = [];
+                $(this).find('select').each(function () {
+                    rowData.push($(this).val());
+                });
+                matchingSetData.push(rowData);
+            });
+
+            // Combine data from both tables and the process name
+            var combinedData = [];
+            combinedData.push(["Process Name:", processName]); // Add process name at the top
+            combinedData.push(["Customer Name:", customerName]); // Add customer name
+            combinedData.push([]); // Add an empty row for separation
+            combinedData.push(["Our File Data"]); // Add a header for the first table
+            combinedData = combinedData.concat(data1);
+            combinedData.push([]); // Add an empty row for separation
+            combinedData.push(["Their File Data"]); // Add a header for the second table
+            combinedData = combinedData.concat(data2);
+            combinedData.push([]); // Add an empty row for separation
+            combinedData.push(matchingSetHeaders); // Add column headers for matching set data
+            combinedData = combinedData.concat(matchingSetData.slice(1)); // Concatenate matching set data without headers
+
+            // Convert combined data to a worksheet
+            var ws = XLSX.utils.aoa_to_sheet(combinedData);
+
+            // Create a new workbook and add the worksheet
+            var wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, processName);
+
+            // Specify the file name
+            var filename = processName + ".xlsx";
+
+            // Export the workbook
+            XLSX.writeFile(wb, filename);
+        } catch (error) {
+            console.error("An error occurred during export: ", error);
+        }
+    }
+</script>
+
